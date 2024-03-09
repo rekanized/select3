@@ -55,7 +55,7 @@ function select3_livesearch(){
             let searchText = this.value;
             let optionsToSearch = searchList.querySelectorAll("div");
             optionsToSearch.forEach(option => {
-                if (option.innerHTML.toLowerCase().indexOf(searchText.toLowerCase()) !== -1){
+                if (option.innerHTML.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 || option.getAttribute('value').toLowerCase().indexOf(searchText.toLowerCase()) !== -1){
                     option.style.display = "block";
                 }
                 else {
