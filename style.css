@@ -5,15 +5,15 @@ select3_searchlist {
     max-height: 70vh;
     overflow: auto;
     overflow-x: hidden;
-    box-shadow: inset 0px 1px 3px #ddd;
+    box-shadow: 0px 0px 3px 0px #868686;
     border-radius: 4px;
 	border: 1px solid #ccc;
+    background-color: white;
 }
 select3_searchlist > option {
     transition: all 0.2s ease;
     padding: 12px 20px;
     cursor: pointer;
-    background-color: white;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
