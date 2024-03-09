@@ -28,6 +28,7 @@ select3_hidebutton, select3_showbutton {
     cursor: pointer;
     right: 0;
     position: absolute;
+    user-select: none;
 }
 select3_showbutton {
     transform: rotate(-90deg);
