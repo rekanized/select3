@@ -21,7 +21,22 @@ function select3(){
         searchInput.setAttribute('type','text');
         searchInput.setAttribute('placeholder','Search');
         searchList.appendChild(searchInput);
+        searchInput.addEventListener("keyup",function(){
+            let searchText = this.value;
+            let optionsToSearch = searchList.querySelectorAll("option");
+            optionsToSearch.forEach(option => {
+                if (option.innerHTML.indexOf(searchText) !== -1){
+                    option.style.display = "block";
+                }
+                else {
+                    option.style.display = "none";
+                }
+            });
+        });
         container.appendChild(searchList);
+        searchList.style.width = selector.offsetWidth;
+        searchList.style.position = "absolute";
+        searchList.style.zIndex = "100";
         options.forEach(option => {
             let newOption = option.cloneNode(true);
             searchList.appendChild(newOption);
