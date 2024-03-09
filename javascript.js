@@ -19,7 +19,10 @@ function select3(setting){
         container.appendChild(element);
         element.style.display = "none";
         let selector = document.createElement('input');
-        selector.value = element.querySelector('option[selected="selected"]').innerHTML;
+        let previousSelection = element.querySelector('option[selected="selected"]');
+        if (previousSelection){
+            selector.value = previousSelection.innerHTML;
+        }
         selector.setAttribute('type','text');
         selector.style.cursor = "pointer";
         selector.setAttribute('readonly','readonly');
@@ -77,23 +80,19 @@ function select3(setting){
         container.appendChild(searchList);
         selector.addEventListener("click",hideButtonToggle);
 
+        function hideButtonToggle(){
+            if (hideButton.style.display == "none"){
+                searchList.style.display = "block";
+                hideButton.style.display = "block";
+                showButton.style.display = "none";
+            }
+            else {
+                searchList.style.display = "none";
+                hideButton.style.display = "none";
+                showButton.style.display = "block";
+            }
+        }
     });
-}
-
-function hideButtonToggle(){
-    let hideButton = document.querySelector('select3_hidebutton');
-    let searchList = document.querySelector('select3_searchlist');
-    let showButton = document.querySelector('select3_showbutton');
-    if (hideButton.style.display == "none"){
-        searchList.style.display = "block";
-        hideButton.style.display = "block";
-        showButton.style.display = "none";
-    }
-    else {
-        searchList.style.display = "none";
-        hideButton.style.display = "none";
-        showButton.style.display = "block";
-    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
