@@ -1,0 +1,21 @@
+select3_selectcontainer input {
+    padding: 4px 8px;
+}
+select3_searchlist {
+    border: 1px solid grey;
+    max-height: 70vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+select3_searchlist > option {
+    transition: all 0.2s ease;
+    padding: 4px 8px;
+    cursor: pointer;
+    background-color: white;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+} 
+select3_searchlist > option:hover {
+    background-color: #ababab;
+}

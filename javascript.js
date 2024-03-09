@@ -10,6 +10,7 @@ function select3(){
         container.appendChild(element);
         element.style.display = "none";
         let selector = document.createElement('input');
+        selector.value = element.querySelector('option[selected="selected"]').innerHTML;
         selector.setAttribute('type','text');
         selector.style.cursor = "pointer";
         selector.setAttribute('readonly','readonly');
