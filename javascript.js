@@ -41,7 +41,7 @@ function select3(setting){
                 let searchText = this.value;
                 let optionsToSearch = searchList.querySelectorAll("option");
                 optionsToSearch.forEach(option => {
-                    if (option.innerHTML.indexOf(searchText) !== -1){
+                    if (option.innerHTML.toLowerCase().indexOf(searchText.toLowerCase()) !== -1){
                         option.style.display = "block";
                     }
                     else {
@@ -61,7 +61,7 @@ function select3(setting){
                 options.forEach(optionRemoveSelect => {
                     optionRemoveSelect.removeAttribute('selected');
                 });
-                selector.value = option.value;
+                selector.value = option.innerHTML;
                 if (setting == 'live'){ searchInput.value = ""; }
                 searchList.querySelectorAll("option").forEach(element => {
                     element.style.display = "block";
@@ -81,13 +81,26 @@ function select3(setting){
         selector.addEventListener("click",hideButtonToggle);
 
         function hideButtonToggle(){
-            if (hideButton.style.display == "none"){
+            let run = hideButton.style.display == "none";
+            document.querySelectorAll('select3_searchlist').forEach(element => {
+                element.style.display = "none";
+            });
+            document.querySelectorAll('select3_hidebutton').forEach(element => {
+                element.style.display = "none";
+            });
+            document.querySelectorAll('select3_showbutton').forEach(element => {
+                element.style.display = "block";
+            });
+            if (run){
                 searchList.style.display = "block";
                 hideButton.style.display = "block";
                 showButton.style.display = "none";
             }
             else {
-                searchList.style.display = "none";
+                document.querySelectorAll('select3_searchlist').forEach(element => {
+                    element.style.display = "none";
+                });
+                //searchList.style.display = "none";
                 hideButton.style.display = "none";
                 showButton.style.display = "block";
             }
