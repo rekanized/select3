@@ -9,6 +9,8 @@ select3_searchlist {
     border-radius: 4px;
 	border: 1px solid #ccc;
     background-color: white;
+    position: absolute;
+    z-index: 100;
 }
 select3_searchlist > option {
     transition: all 0.2s ease;
