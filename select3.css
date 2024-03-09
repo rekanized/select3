@@ -12,15 +12,19 @@ select3_searchlist {
     position: absolute;
     z-index: 100;
 }
-select3_searchlist > option {
+select3_searchlist > div {
     transition: all 0.2s ease;
     padding: 12px 20px;
     cursor: pointer;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-} 
-select3_searchlist > option:hover {
+}
+select3_searchlist > div > input[type=checkbox] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+select3_searchlist > div:hover {
     background-color: #ababab;
 }
 select3_hidebutton, select3_showbutton {
