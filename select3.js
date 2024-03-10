@@ -38,6 +38,10 @@ function select3_livesearch(){
         selector.style.cursor = "pointer";
         selector.style.textOverflow = "ellipsis";
         selector.style.width = element.style.width;
+        if (element.style.width){
+            selector.style.minWidth = "auto";
+            selector.style.maxWidth = "auto";
+        }
         container.appendChild(selector);
 
         // Create the search "menu"
@@ -153,6 +157,11 @@ function select3(){
         selector.setAttribute('readonly','readonly');
         selector.style.cursor = "pointer";
         selector.style.textOverflow = "ellipsis";
+        selector.style.width = element.style.width;
+        if (element.style.width){
+            selector.style.minWidth = "auto";
+            selector.style.maxWidth = "auto";
+        }
         container.appendChild(selector);
 
         // Create the search "menu"
@@ -245,6 +254,11 @@ function select3_multiselect(){
         selector.setAttribute('readonly','readonly');
         selector.style.cursor = "pointer";
         selector.style.textOverflow = "ellipsis";
+        selector.style.width = element.style.width;
+        if (element.style.width){
+            selector.style.minWidth = "auto";
+            selector.style.maxWidth = "auto";
+        }
         container.appendChild(selector);
 
         // Create the search "menu"
@@ -263,10 +277,27 @@ function select3_multiselect(){
             newOption.appendChild(checkbox);
             newOption.appendChild(document.createTextNode(option.innerHTML));
             searchList.appendChild(newOption);
+            checkbox.addEventListener("click",function(){
+                this.checked = !this.checked;
+            });
             newOption.addEventListener("click",function(){
-                // THIS NEEDS TO BE REBUILT FROM SCRATCH!
-                selector.value = option.innerHTML;
-                element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
+                let checkboxObject = this.querySelector('input[type="checkbox"]');
+                checkboxObject.checked = !checkboxObject.checked;
+                allCheckboxes = searchList.querySelectorAll('input[type="checkbox"]');
+                let inputValues = [];
+                allCheckboxes.forEach(checkboxValue => {
+                    if (checkboxValue.checked){
+                        inputValues.push(checkboxValue.parentElement.innerText);
+                    }
+                });
+                selector.value = inputValues.join(',');
+                let replacementOption = document.createElement('option');
+                replacementOption.value = '["'+inputValues.join('","')+'"]';;
+                replacementOption.setAttribute('selected','selected');
+                element.appendChild(replacementOption);
+            });
+            options.forEach(optionObject => {
+                optionObject.remove();
             });
         });
 
