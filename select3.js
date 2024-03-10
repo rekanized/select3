@@ -89,35 +89,25 @@ function select3_livesearch(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         hideButton.style.height = (buttonsFixAmount)+"px";
         hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        hideButton.addEventListener("click",viewToggle);
+        hideButton.addEventListener("click",hideSearchlist);
         showButton.style.height = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
-        showButton.addEventListener("click",viewToggle);
-        selector.addEventListener("click",viewToggle);
+        showButton.addEventListener("click",showSearchlist);
+        selector.addEventListener("click",showSearchlist);
+        container.addEventListener("mouseleave",hideSearchlist);
 
-        function viewToggle(){
-            let run = hideButton.style.display == "none";
-            document.querySelectorAll('select3_searchlist').forEach(element => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll('select3_hidebutton').forEach(element => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll('select3_showbutton').forEach(element => {
-                element.style.display = "block";
-            });
-            if (run){
-                searchList.style.display = "block";
-                hideButton.style.display = "block";
-                showButton.style.display = "none";
-            }
-            else {
-                document.querySelectorAll('select3_searchlist').forEach(element => {
-                    element.style.display = "none";
-                });
-                hideButton.style.display = "none";
-                showButton.style.display = "block";
-            }
+        function showSearchlist(){
+            showButton.style.display = "none";
+            hideButton.style.display = "block";
+
+            searchList.style.display = "block";
+        }
+
+        function hideSearchlist(){
+            showButton.style.display = "block";
+            hideButton.style.display = "none";
+
+            searchList.style.display = "none";
         }
     });
 }
@@ -191,35 +181,25 @@ function select3(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         hideButton.style.height = (buttonsFixAmount)+"px";
         hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        hideButton.addEventListener("click",viewToggle);
+        hideButton.addEventListener("click",hideSearchlist);
         showButton.style.height = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
-        showButton.addEventListener("click",viewToggle);
-        selector.addEventListener("click",viewToggle);
+        showButton.addEventListener("click",showSearchlist);
+        selector.addEventListener("click",showSearchlist);
+        container.addEventListener("mouseleave",hideSearchlist);
 
-        function viewToggle(){
-            let run = hideButton.style.display == "none";
-            document.querySelectorAll('select3_searchlist').forEach(element => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll('select3_hidebutton').forEach(element => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll('select3_showbutton').forEach(element => {
-                element.style.display = "block";
-            });
-            if (run){
-                searchList.style.display = "block";
-                hideButton.style.display = "block";
-                showButton.style.display = "none";
-            }
-            else {
-                document.querySelectorAll('select3_searchlist').forEach(element => {
-                    element.style.display = "none";
-                });
-                hideButton.style.display = "none";
-                showButton.style.display = "block";
-            }
+        function showSearchlist(){
+            showButton.style.display = "none";
+            hideButton.style.display = "block";
+
+            searchList.style.display = "block";
+        }
+
+        function hideSearchlist(){
+            showButton.style.display = "block";
+            hideButton.style.display = "none";
+
+            searchList.style.display = "none";
         }
     });
 }
@@ -293,35 +273,25 @@ function select3_multiselect(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         hideButton.style.height = (buttonsFixAmount)+"px";
         hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        hideButton.addEventListener("click",viewToggle);
+        hideButton.addEventListener("click",hideSearchlist);
         showButton.style.height = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
-        showButton.addEventListener("click",viewToggle);
-        selector.addEventListener("click",viewToggle);
+        showButton.addEventListener("click",showSearchlist);
+        selector.addEventListener("click",showSearchlist);
+        container.addEventListener("mouseleave",hideSearchlist);
 
-        function viewToggle(){
-            let run = hideButton.style.display == "none";
-            document.querySelectorAll('select3_searchlist').forEach(element => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll('select3_hidebutton').forEach(element => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll('select3_showbutton').forEach(element => {
-                element.style.display = "block";
-            });
-            if (run){
-                searchList.style.display = "block";
-                hideButton.style.display = "block";
-                showButton.style.display = "none";
-            }
-            else {
-                document.querySelectorAll('select3_searchlist').forEach(element => {
-                    element.style.display = "none";
-                });
-                hideButton.style.display = "none";
-                showButton.style.display = "block";
-            }
+        function showSearchlist(){
+            showButton.style.display = "none";
+            hideButton.style.display = "block";
+
+            searchList.style.display = "block";
+        }
+
+        function hideSearchlist(){
+            showButton.style.display = "block";
+            hideButton.style.display = "none";
+
+            searchList.style.display = "none";
         }
     });
 }
