@@ -37,6 +37,7 @@ function select3_livesearch(){
         selector.setAttribute('readonly','readonly');
         selector.style.cursor = "pointer";
         selector.style.textOverflow = "ellipsis";
+        selector.style.width = element.style.width;
         container.appendChild(selector);
 
         // Create the search "menu"
@@ -47,6 +48,7 @@ function select3_livesearch(){
         searchInput = document.createElement('input');
         searchInput.setAttribute('type','text');
         searchInput.setAttribute('placeholder','Search...');
+        searchInput.style.width = selector.offsetWidth;
         searchList.appendChild(searchInput);
 
         // Search functions
