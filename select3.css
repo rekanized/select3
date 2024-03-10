@@ -29,7 +29,7 @@ select3_searchlist > div:hover {
 }
 select3_hidebutton, select3_showbutton {
     text-align: center;
-    width: 20px;
+    width: 30px;
     display: none;
     cursor: pointer;
     right: 0;
