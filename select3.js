@@ -81,7 +81,7 @@ function select3_livesearch(){
                     element.style.display = "block";
                 });
                 element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
-                viewToggle();
+                hideSearchlist();
             });
         });
 
@@ -173,7 +173,7 @@ function select3(){
                 });
                 selector.value = option.innerHTML;
                 element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
-                viewToggle();
+                hideSearchlist();
             });
         });
 
@@ -265,7 +265,6 @@ function select3_multiselect(){
                 // THIS NEEDS TO BE REBUILT FROM SCRATCH!
                 selector.value = option.innerHTML;
                 element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
-                viewToggle();
             });
         });
 
