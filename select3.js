@@ -87,6 +87,14 @@ function select3_livesearch(){
                     element.style.display = "block";
                 });
                 element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
+
+                // create a fake event to trigger change when we change something
+                var event = new Event('change', {
+                    bubbles: true,
+                    cancelable: true
+                });
+                element.dispatchEvent(event);
+
                 hideSearchlist();
             });
         });
@@ -184,6 +192,14 @@ function select3(){
                 });
                 selector.value = option.innerHTML;
                 element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
+
+                // create a fake event to trigger change when we change something
+                var event = new Event('change', {
+                    bubbles: true,
+                    cancelable: true
+                });
+                element.dispatchEvent(event);
+
                 hideSearchlist();
             });
         });
@@ -295,6 +311,13 @@ function select3_multiselect(){
                 replacementOption.value = '["'+inputValues.join('","')+'"]';;
                 replacementOption.setAttribute('selected','selected');
                 element.appendChild(replacementOption);
+
+                // create a fake event to trigger change when we change something
+                var event = new Event('change', {
+                    bubbles: true,
+                    cancelable: true
+                });
+                element.dispatchEvent(event);
             });
             options.forEach(optionObject => {
                 optionObject.remove();
