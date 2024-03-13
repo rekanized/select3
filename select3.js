@@ -87,14 +87,6 @@ function select3_livesearch(){
                     element.style.display = "block";
                 });
                 element.querySelector("option[value='"+option.value+"']").setAttribute('selected','selected');
-
-                // create a fake event to trigger change when we change something
-                var event = new Event('change', {
-                    bubbles: true,
-                    cancelable: true
-                });
-                element.dispatchEvent(event);
-
                 hideSearchlist();
             });
         });
@@ -103,9 +95,15 @@ function select3_livesearch(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         hideButton.style.height = (buttonsFixAmount)+"px";
         hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        hideButton.addEventListener("click",hideSearchlist);
         showButton.style.height = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
+
+        if (element.getAttribute('disabled')){
+            selector.setAttribute('disabled','true');
+            return;
+        }
+
+        hideButton.addEventListener("click",hideSearchlist);
         showButton.addEventListener("click",showSearchlist);
         selector.addEventListener("click",showSearchlist);
         container.addEventListener("mouseleave",hideSearchlist);
@@ -113,14 +111,12 @@ function select3_livesearch(){
         function showSearchlist(){
             showButton.style.display = "none";
             hideButton.style.display = "block";
-
             searchList.style.display = "block";
         }
 
         function hideSearchlist(){
             showButton.style.display = "block";
             hideButton.style.display = "none";
-
             searchList.style.display = "none";
         }
     });
@@ -208,9 +204,15 @@ function select3(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         hideButton.style.height = (buttonsFixAmount)+"px";
         hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        hideButton.addEventListener("click",hideSearchlist);
         showButton.style.height = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
+
+        if (element.getAttribute('disabled')){
+            selector.setAttribute('disabled','true');
+            return;
+        }
+
+        hideButton.addEventListener("click",hideSearchlist);
         showButton.addEventListener("click",showSearchlist);
         selector.addEventListener("click",showSearchlist);
         container.addEventListener("mouseleave",hideSearchlist);
@@ -218,14 +220,12 @@ function select3(){
         function showSearchlist(){
             showButton.style.display = "none";
             hideButton.style.display = "block";
-
             searchList.style.display = "block";
         }
 
         function hideSearchlist(){
             showButton.style.display = "block";
             hideButton.style.display = "none";
-
             searchList.style.display = "none";
         }
     });
@@ -311,13 +311,6 @@ function select3_multiselect(){
                 replacementOption.value = '["'+inputValues.join('","')+'"]';;
                 replacementOption.setAttribute('selected','selected');
                 element.appendChild(replacementOption);
-
-                // create a fake event to trigger change when we change something
-                var event = new Event('change', {
-                    bubbles: true,
-                    cancelable: true
-                });
-                element.dispatchEvent(event);
             });
             options.forEach(optionObject => {
                 optionObject.remove();
@@ -328,9 +321,15 @@ function select3_multiselect(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         hideButton.style.height = (buttonsFixAmount)+"px";
         hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        hideButton.addEventListener("click",hideSearchlist);
         showButton.style.height = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
+
+        if (element.getAttribute('disabled')){
+            selector.setAttribute('disabled','true');
+            return;
+        }
+
+        hideButton.addEventListener("click",hideSearchlist);
         showButton.addEventListener("click",showSearchlist);
         selector.addEventListener("click",showSearchlist);
         container.addEventListener("mouseleave",hideSearchlist);
