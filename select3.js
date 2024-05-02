@@ -1,3 +1,61 @@
+function select3_addcss(){
+    styles = `
+        select3_selectcontainer {
+            display: flex;
+            align-items: stretch;
+            position: relative;
+            flex-direction: column;
+        }
+        select3_searchlist {
+            max-height: 40vh;
+            overflow: auto;
+            overflow-x: hidden;
+            box-shadow: 0px 0px 3px 0px #868686;
+            border-radius: 4px;
+            background-color: white;
+            position: absolute;
+            right: 0;
+            z-index: 100;
+        }
+        select3_searchlist > div:first-child {
+            padding: 8px 16px;
+        }
+        select3_searchlist > div {
+            transition: all 0.2s ease;
+            padding: 8px 16px;
+            cursor: pointer;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        select3_searchlist > div > input[type=checkbox] {
+            transform: scale(1.2);
+            margin-right: 8px;
+        }
+        select3_searchlist > div:hover {
+            background-color: #ababab;
+        }
+        select3_showbutton {
+            transition: transform 0.1s ease;
+            text-align: center;
+            display: none;
+            cursor: pointer;
+            right: 0;
+            position: absolute;
+            user-select: none;
+            transform: rotate(-90deg);
+            box-shadow: 0px -4px 4px -6px black;
+        }
+        .select3_open {
+            transform: rotate(90deg);
+        }
+    `;
+    let css = document.createElement('style');
+    css.innerText = styles;
+    document.head.appendChild(css);
+}
+select3_addcss();
+
 function select3_livesearch(){
     let allSelects = document.querySelectorAll('.select3-livesearch');
     allSelects.forEach(element => {
@@ -9,14 +67,8 @@ function select3_livesearch(){
 
         // Create the container
         let container = document.createElement('select3_selectcontainer');
-        container.style.position = "relative";
 
-        // Add show or hide toggle on the dropdown
-        let hideButton = document.createElement('select3_hidebutton');
-        hideButton.innerHTML = '&#10006;';
-        hideButton.style.display = "none";
-        container.appendChild(hideButton);
-
+        // Create show button
         let showButton = document.createElement('select3_showbutton');
         showButton.innerHTML = '&#10094;';
         showButton.style.display = "block";
@@ -93,9 +145,7 @@ function select3_livesearch(){
 
         // viewToggle Button fix for them so the can dynamically change based on how large the select is
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
-        hideButton.style.height = (buttonsFixAmount)+"px";
-        hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        showButton.style.height = (buttonsFixAmount)+"px";
+        showButton.style.width = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
 
         if (element.getAttribute('disabled')){
@@ -103,21 +153,22 @@ function select3_livesearch(){
             return;
         }
 
-        hideButton.addEventListener("click",hideSearchlist);
         showButton.addEventListener("click",showSearchlist);
         selector.addEventListener("click",showSearchlist);
         container.addEventListener("mouseleave",hideSearchlist);
 
         function showSearchlist(){
-            showButton.style.display = "none";
-            hideButton.style.display = "block";
+            showButton.classList.add('select3_open');
+            searchList.style.marginTop = selector.offsetHeight;
             searchList.style.display = "block";
+            showButton.removeEventListener("click",showSearchlist);
+            showButton.addEventListener("click",hideSearchlist);
         }
 
         function hideSearchlist(){
-            showButton.style.display = "block";
-            hideButton.style.display = "none";
+            showButton.classList.remove('select3_open');
             searchList.style.display = "none";
+            showButton.addEventListener("click",showSearchlist);
         }
     });
 }
@@ -133,14 +184,8 @@ function select3(){
 
         // Create the container
         let container = document.createElement('select3_selectcontainer');
-        container.style.position = "relative";
 
-        // Add show or hide toggle on the dropdown
-        let hideButton = document.createElement('select3_hidebutton');
-        hideButton.innerHTML = '&#10006;';
-        hideButton.style.display = "none";
-        container.appendChild(hideButton);
-
+        // Create show button
         let showButton = document.createElement('select3_showbutton');
         showButton.innerHTML = '&#10094;';
         showButton.style.display = "block";
@@ -202,31 +247,31 @@ function select3(){
 
         // viewToggle Button fix for them so the can dynamically change based on how large the select is
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
-        hideButton.style.height = (buttonsFixAmount)+"px";
-        hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        showButton.style.height = (buttonsFixAmount)+"px";
+        showButton.style.width = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
+        selector.style.paddingRight = (buttonsFixAmount)+"px";
 
         if (element.getAttribute('disabled')){
             selector.setAttribute('disabled','true');
             return;
         }
 
-        hideButton.addEventListener("click",hideSearchlist);
         showButton.addEventListener("click",showSearchlist);
         selector.addEventListener("click",showSearchlist);
         container.addEventListener("mouseleave",hideSearchlist);
 
         function showSearchlist(){
-            showButton.style.display = "none";
-            hideButton.style.display = "block";
+            showButton.classList.add('select3_open');
+            searchList.style.marginTop = selector.offsetHeight;
             searchList.style.display = "block";
+            showButton.removeEventListener("click",showSearchlist);
+            showButton.addEventListener("click",hideSearchlist);
         }
 
         function hideSearchlist(){
-            showButton.style.display = "block";
-            hideButton.style.display = "none";
+            showButton.classList.remove('select3_open');
             searchList.style.display = "none";
+            showButton.addEventListener("click",showSearchlist);
         }
     });
 }
@@ -242,14 +287,8 @@ function select3_multiselect(){
 
         // Create the container
         let container = document.createElement('select3_selectcontainer');
-        container.style.position = "relative";
 
-        // Add show or hide toggle on the dropdown
-        let hideButton = document.createElement('select3_hidebutton');
-        hideButton.innerHTML = '&#10006;';
-        hideButton.style.display = "none";
-        container.appendChild(hideButton);
-
+        // Create the show button
         let showButton = document.createElement('select3_showbutton');
         showButton.innerHTML = '&#10094;';
         showButton.style.display = "block";
@@ -306,7 +345,7 @@ function select3_multiselect(){
                         inputValues.push(checkboxValue.parentElement.innerText);
                     }
                 });
-                selector.value = inputValues.join(',');
+                selector.value = inputValues.join(', ');
                 let replacementOption = document.createElement('option');
                 replacementOption.value = '["'+inputValues.join('","')+'"]';;
                 replacementOption.setAttribute('selected','selected');
@@ -319,33 +358,30 @@ function select3_multiselect(){
 
         // viewToggle Button fix for them so the can dynamically change based on how large the select is
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
-        hideButton.style.height = (buttonsFixAmount)+"px";
-        hideButton.style.lineHeight = (buttonsFixAmount)+"px";
-        showButton.style.height = (buttonsFixAmount)+"px";
+        showButton.style.width = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
-
+        
         if (element.getAttribute('disabled')){
             selector.setAttribute('disabled','true');
             return;
         }
 
-        hideButton.addEventListener("click",hideSearchlist);
         showButton.addEventListener("click",showSearchlist);
         selector.addEventListener("click",showSearchlist);
         container.addEventListener("mouseleave",hideSearchlist);
 
         function showSearchlist(){
-            showButton.style.display = "none";
-            hideButton.style.display = "block";
-
+            showButton.classList.add('select3_open');
+            searchList.style.marginTop = selector.offsetHeight;
             searchList.style.display = "block";
+            showButton.removeEventListener("click",showSearchlist);
+            showButton.addEventListener("click",hideSearchlist);
         }
 
         function hideSearchlist(){
-            showButton.style.display = "block";
-            hideButton.style.display = "none";
-
+            showButton.classList.remove('select3_open');
             searchList.style.display = "none";
+            showButton.addEventListener("click",showSearchlist);
         }
     });
 }
