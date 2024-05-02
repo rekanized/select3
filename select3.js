@@ -16,8 +16,7 @@ function select3_addcss(){
             box-shadow: 0px 0px 3px 0px #868686;
             border-radius: 4px;
             background-color: white;
-            position: absolute;
-            right: 0;
+            position: fixed;
             z-index: 100;
         }
         select3_searchlist > div:first-child {
