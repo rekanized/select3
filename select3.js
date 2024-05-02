@@ -29,6 +29,9 @@ function select3_addcss(){
             cursor: pointer;
             display: flex;
             align-items: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
         select3_searchlist optiontext {
             text-overflow: ellipsis;
@@ -132,7 +135,9 @@ function select3_livesearch(){
         options.forEach(option => {
             let newOption = document.createElement('div');
             newOption.setAttribute('value',option.value);
-            newOption.appendChild(document.createTextNode(option.innerHTML));
+            let optionText = document.createElement('optiontext');
+            optionText.appendChild(document.createTextNode(option.innerHTML));
+            newOption.appendChild(optionText);
             searchList.appendChild(newOption);
             newOption.addEventListener("click",function(){
                 options.forEach(optionRemoveSelect => {
@@ -233,7 +238,9 @@ function select3(){
             //let newOption = option.cloneNode(true);
             let newOption = document.createElement('div');
             newOption.setAttribute('value',option.value);
-            newOption.appendChild(document.createTextNode(option.innerHTML));
+            let optionText = document.createElement('optiontext');
+            optionText.appendChild(document.createTextNode(option.innerHTML));
+            newOption.appendChild(optionText);
             searchList.appendChild(newOption);
             newOption.addEventListener("click",function(){
                 options.forEach(optionRemoveSelect => {
