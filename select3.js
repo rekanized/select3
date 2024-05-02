@@ -99,12 +99,10 @@ function select3_livesearch(){
         // Create the search "menu"
         let searchList = document.createElement('select3_searchlist');
         searchList.style.display = "none";
-        searchList.style.width = selector.offsetWidth;
         let searchInput;
         searchInput = document.createElement('input');
         searchInput.setAttribute('type','text');
         searchInput.setAttribute('placeholder','Search...');
-        searchInput.style.width = selector.offsetWidth;
         searchList.appendChild(searchInput);
 
         // Search functions
@@ -147,6 +145,7 @@ function select3_livesearch(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         showButton.style.width = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
+        selector.style.paddingRight = (buttonsFixAmount)+"px";
 
         if (element.getAttribute('disabled')){
             selector.setAttribute('disabled','true');
@@ -160,6 +159,8 @@ function select3_livesearch(){
         function showSearchlist(){
             showButton.classList.add('select3_open');
             searchList.style.marginTop = selector.offsetHeight;
+            searchList.style.width = selector.offsetWidth;
+            searchInput.style.width = selector.offsetWidth;
             searchList.style.display = "block";
             showButton.removeEventListener("click",showSearchlist);
             showButton.addEventListener("click",hideSearchlist);
@@ -263,6 +264,7 @@ function select3(){
         function showSearchlist(){
             showButton.classList.add('select3_open');
             searchList.style.marginTop = selector.offsetHeight;
+            searchList.style.width = selector.offsetWidth;
             searchList.style.display = "block";
             showButton.removeEventListener("click",showSearchlist);
             showButton.addEventListener("click",hideSearchlist);
@@ -360,6 +362,7 @@ function select3_multiselect(){
         let buttonsFixAmount = (selector.offsetHeight + selector.style.paddingTop);
         showButton.style.width = (buttonsFixAmount)+"px";
         showButton.style.lineHeight = (buttonsFixAmount)+"px";
+        selector.style.paddingRight = (buttonsFixAmount)+"px";
         
         if (element.getAttribute('disabled')){
             selector.setAttribute('disabled','true');
@@ -373,6 +376,7 @@ function select3_multiselect(){
         function showSearchlist(){
             showButton.classList.add('select3_open');
             searchList.style.marginTop = selector.offsetHeight;
+            searchList.style.width = selector.offsetWidth;
             searchList.style.display = "block";
             showButton.removeEventListener("click",showSearchlist);
             showButton.addEventListener("click",hideSearchlist);
