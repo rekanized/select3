@@ -2,7 +2,6 @@ function select3_addcss(){
     styles = `
         select3_selectcontainer {
             display: flex;
-            align-items: stretch;
             position: relative;
             flex-direction: column;
         }
