@@ -6,6 +6,9 @@ function select3_addcss(){
             position: relative;
             flex-direction: column;
         }
+        select3_selectcontainer input[type="text"] {
+            margin: 0px !important;
+        }
         select3_searchlist {
             max-height: 40vh;
             overflow: auto;
@@ -24,6 +27,10 @@ function select3_addcss(){
             transition: all 0.2s ease;
             padding: 8px 16px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        select3_searchlist optiontext {
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
@@ -332,7 +339,9 @@ function select3_multiselect(){
             let checkbox = document.createElement('input');
             checkbox.setAttribute('type','checkbox');
             newOption.appendChild(checkbox);
-            newOption.appendChild(document.createTextNode(option.innerHTML));
+            let optionText = document.createElement('optiontext');
+            optionText.appendChild(document.createTextNode(option.innerHTML));
+            newOption.appendChild(optionText);
             searchList.appendChild(newOption);
             checkbox.addEventListener("click",function(){
                 this.checked = !this.checked;
